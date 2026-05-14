@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zyad Ammar — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#07111f;--navy-mid:#0d1f36;--navy-card:#112240;--blue:#1a6fc4;--blue-bright:#2196f3;--accent:#4fc3f7;--white:#eef4ff;--white-dim:#7a93b8;--white-muted:#3d5478}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 6%;background:rgba(7,17,31,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(79,195,247,0.08)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--accent);letter-spacing:-1px;cursor:pointer}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--white-dim);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-admin-btn{font-size:0.75rem;color:var(--white-muted);cursor:pointer;padding:0.3rem 0.8rem;border:1px solid var(--white-muted);border-radius:2rem;transition:all 0.2s;background:none}
+.nav-admin-btn:hover{color:var(--accent);border-color:var(--accent)}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 6%;padding-top:5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;border-radius:50%;pointer-events:none}
+.hero-bg.b1{width:600px;height:600px;top:-150px;right:-150px;background:radial-gradient(circle,rgba(33,150,243,0.1) 0%,transparent 70%)}
+.hero-bg.b2{width:400px;height:400px;bottom:-100px;left:-50px;background:radial-gradient(circle,rgba(79,195,247,0.07) 0%,transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;max-width:1100px;margin:0 auto}
+.hero-content{position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(79,195,247,0.25);padding:0.4rem 1rem;border-radius:2rem;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.7s 0.1s ease forwards}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.hero-name{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,5rem);font-weight:800;line-height:1;letter-spacing:-2px;margin-bottom:0.4rem;opacity:0;animation:fadeUp 0.7s 0.2s ease forwards}
+.hero-name .acc{color:var(--accent)}
+.hero-role{font-family:'Syne',sans-serif;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:400;color:var(--white-dim);margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.7s 0.3s ease forwards}
+.hero-desc{font-size:0.93rem;line-height:1.85;color:var(--white-dim);max-width:480px;margin-bottom:2rem;opacity:0;animation:fadeUp 0.7s 0.4s ease forwards}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s 0.5s ease forwards}
+.btn-p{background:var(--blue-bright);color:#fff;padding:0.8rem 1.8rem;border-radius:0.5rem;text-decoration:none;font-weight:500;font-size:0.9rem;transition:background 0.2s,transform 0.2s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-p:hover{background:var(--accent);color:var(--navy);transform:translateY(-2px)}
+.btn-o{border:1px solid rgba(79,195,247,0.3);color:var(--accent);padding:0.8rem 1.8rem;border-radius:0.5rem;text-decoration:none;font-weight:500;font-size:0.9rem;transition:all 0.2s;background:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-o:hover{background:rgba(79,195,247,0.08);border-color:var(--accent);transform:translateY(-2px)}
+
+.hero-photo-wrap{display:flex;justify-content:center;align-items:center;opacity:0;animation:fadeIn 1s 0.6s ease forwards}
+.photo-ring{width:300px;height:300px;border-radius:50%;border:1px solid rgba(79,195,247,0.15);display:flex;align-items:center;justify-content:center;animation:spin 25s linear infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.hero-photo{width:272px;height:272px;border-radius:50%;object-fit:cover;border:3px solid rgba(79,195,247,0.25);display:block;animation:spin 25s linear infinite reverse}
+.hero-photo-ph{width:272px;height:272px;border-radius:50%;background:var(--navy-card);border:2px dashed rgba(79,195,247,0.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;color:var(--white-muted);font-size:0.78rem;text-align:center;cursor:pointer;transition:border-color 0.2s;animation:spin 25s linear infinite reverse}
+.hero-photo-ph:hover{border-color:var(--accent)}
+.hero-photo-ph svg{width:36px;height:36px;stroke:var(--white-muted);opacity:0.6}
+
+.stats-bar{background:var(--navy-mid);border-top:1px solid rgba(79,195,247,0.07);border-bottom:1px solid rgba(79,195,247,0.07);padding:2rem 6%;display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
+.stat-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);text-align:center}
+.stat-lbl{font-size:0.76rem;color:var(--white-dim);margin-top:0.2rem;text-align:center}
+
+section{padding:6rem 6%}
+.si{max-width:1100px;margin:0 auto}
+.slbl{font-size:0.7rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem}
+.stitle{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:700;letter-spacing:-1px}
+.div{width:2.5rem;height:3px;background:var(--accent);margin:1rem 0 3rem;border-radius:2px}
+
+#skills{background:var(--navy-mid)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1rem}
+.skill-card{background:var(--navy);border:1px solid rgba(79,195,247,0.1);border-radius:0.75rem;padding:1.5rem;transition:border-color 0.2s,transform 0.2s}
+.skill-card:hover{border-color:rgba(79,195,247,0.35);transform:translateY(-4px)}
+.sk-icon{font-size:1.5rem;margin-bottom:0.7rem}
+.sk-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:0.3rem}
+.sk-desc{font-size:0.76rem;color:var(--white-dim);line-height:1.6}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.project-card{background:var(--navy-card);border:1px solid rgba(79,195,247,0.1);border-radius:1rem;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.2s,transform 0.2s}
+.project-card:hover{border-color:rgba(79,195,247,0.3);transform:translateY(-5px)}
+.pc-accent{height:3px;background:linear-gradient(90deg,var(--blue-bright),var(--accent));opacity:0;transition:opacity 0.2s}
+.project-card:hover .pc-accent{opacity:1}
+.pc-img{height:155px;background:var(--navy-mid);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pc-img img{width:100%;height:100%;object-fit:cover}
+.pc-img-ph{display:flex;flex-direction:column;align-items:center;gap:0.4rem;color:var(--white-muted);font-size:0.72rem}
+.pc-img-ph svg{width:28px;height:28px;stroke:var(--white-muted);opacity:0.4}
+.pc-body{padding:1.4rem;display:flex;flex-direction:column;gap:0.7rem;flex:1}
+.pc-tag{display:inline-flex;font-size:0.68rem;font-weight:500;color:var(--accent);background:rgba(79,195,247,0.1);padding:0.22rem 0.6rem;border-radius:2rem;width:fit-content}
+.pc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+.pc-desc{font-size:0.8rem;color:var(--white-dim);line-height:1.7;flex:1}
+.pc-metrics{display:flex;gap:0.4rem;flex-wrap:wrap}
+.metric{font-size:0.7rem;color:var(--white-dim);background:rgba(255,255,255,0.04);padding:0.18rem 0.55rem;border-radius:0.3rem;border:1px solid rgba(255,255,255,0.06)}
+.pc-link{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.78rem;font-weight:500;color:var(--accent);text-decoration:none;transition:gap 0.2s}
+.pc-link:hover{gap:0.6rem}
+.cs-badge{font-size:0.7rem;color:var(--white-muted);font-style:italic}
+
+#experience{background:var(--navy-mid)}
+.exp-list{display:flex;flex-direction:column;gap:2.5rem}
+.exp-item{display:grid;grid-template-columns:130px 1fr;gap:2rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+.exp-item:last-child{border-bottom:none;padding-bottom:0}
+.exp-date{font-size:0.76rem;color:var(--accent);font-weight:500;padding-top:0.2rem}
+.exp-role{font-family:'Syne',sans-serif;font-weight:700;font-size:0.98rem;margin-bottom:0.2rem}
+.exp-co{font-size:0.8rem;color:var(--white-dim);margin-bottom:0.7rem}
+.exp-pts{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.exp-pts li{font-size:0.8rem;color:var(--white-dim);line-height:1.6;padding-left:1rem;position:relative}
+.exp-pts li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:0.68rem;top:0.18rem}
+
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-desc{font-size:0.88rem;color:var(--white-dim);line-height:1.85;margin-bottom:1.5rem}
+.contact-links{display:flex;flex-direction:column;gap:0.75rem}
+.contact-link{display:flex;align-items:center;gap:1rem;background:var(--navy-card);border:1px solid rgba(79,195,247,0.1);border-radius:0.75rem;padding:0.85rem 1.1rem;text-decoration:none;color:var(--white);transition:border-color 0.2s,transform 0.2s}
+.contact-link:hover{border-color:rgba(79,195,247,0.35);transform:translateX(4px)}
+.cl-icon{width:36px;height:36px;background:rgba(79,195,247,0.1);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.cl-lbl{font-size:0.68rem;color:var(--white-dim)}
+.cl-val{font-size:0.83rem;font-weight:500}
+
+footer{text-align:center;padding:2rem;font-size:0.76rem;color:var(--white-muted);border-top:1px solid rgba(255,255,255,0.05)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.admin-overlay{position:fixed;inset:0;background:rgba(7,17,31,0.97);z-index:1000;display:none;flex-direction:column;overflow-y:auto}
+.admin-overlay.open{display:flex}
+.admin-login{margin:auto;width:100%;max-width:360px;padding:3rem 2rem}
+.admin-login h2{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:0.5rem}
+.admin-login p{font-size:0.8rem;color:var(--white-dim);margin-bottom:2rem}
+.af{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem}
+.af label{font-size:0.75rem;color:var(--white-dim)}
+.af input{background:var(--navy-card);border:1px solid rgba(79,195,247,0.15);border-radius:0.5rem;padding:0.7rem 1rem;color:var(--white);font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;width:100%}
+.af input:focus{border-color:var(--accent)}
+.admin-err{font-size:0.76rem;color:#f44336;margin-bottom:1rem;display:none}
+.admin-panel{padding:2rem 4%;max-width:980px;margin:0 auto;width:100%}
+.admin-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(79,195,247,0.1)}
+.admin-hdr h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700}
+.admin-close{background:none;border:1px solid rgba(255,255,255,0.1);color:var(--white-dim);padding:0.35rem 0.9rem;border-radius:0.4rem;cursor:pointer;font-size:0.8rem;transition:all 0.2s}
+.admin-close:hover{border-color:var(--accent);color:var(--accent)}
+.admin-sec{margin-bottom:2.5rem}
+.admin-sec h3{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:1rem;color:var(--accent)}
+.photo-upload-row{display:flex;align-items:center;gap:1.5rem;background:var(--navy-card);border:1px solid rgba(79,195,247,0.1);border-radius:0.75rem;padding:1.2rem}
+.ap-preview{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid rgba(79,195,247,0.2)}
+.ap-ph{width:68px;height:68px;border-radius:50%;background:var(--navy-mid);border:2px dashed rgba(79,195,247,0.2);display:flex;align-items:center;justify-content:center;color:var(--white-muted);font-size:1.4rem}
+.proj-list{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1rem}
+.proj-row{background:var(--navy-card);border:1px solid rgba(79,195,247,0.1);border-radius:0.7rem;padding:0.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.pr-tag{font-size:0.68rem;color:var(--accent);background:rgba(79,195,247,0.1);padding:0.18rem 0.55rem;border-radius:2rem;flex-shrink:0}
+.pr-title{font-size:0.85rem;font-weight:500;flex:1}
+.pr-btns{display:flex;gap:0.4rem}
+.pr-btn{background:none;border:1px solid rgba(255,255,255,0.1);color:var(--white-dim);padding:0.25rem 0.65rem;border-radius:0.35rem;font-size:0.72rem;cursor:pointer;transition:all 0.2s}
+.pr-btn:hover{border-color:var(--accent);color:var(--accent)}
+.pr-btn.del:hover{border-color:#f44336;color:#f44336}
+.add-btn{background:rgba(79,195,247,0.1);border:1px solid rgba(79,195,247,0.2);color:var(--accent);padding:0.55rem 1.1rem;border-radius:0.5rem;font-size:0.8rem;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+.add-btn:hover{background:rgba(79,195,247,0.17)}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(7,17,31,0.95);z-index:2000;display:none;align-items:center;justify-content:center;padding:2rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--navy-mid);border:1px solid rgba(79,195,247,0.15);border-radius:1rem;padding:2rem;width:100%;max-width:540px;max-height:90vh;overflow-y:auto}
+.modal h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:1.5rem}
+.mf{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.9rem}
+.mf label{font-size:0.73rem;color:var(--white-dim)}
+.mf input,.mf textarea,.mf select{background:var(--navy);border:1px solid rgba(79,195,247,0.12);border-radius:0.5rem;padding:0.62rem 0.9rem;color:var(--white);font-size:0.83rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;width:100%}
+.mf input:focus,.mf textarea:focus,.mf select:focus{border-color:var(--accent)}
+.mf textarea{resize:vertical;min-height:80px}
+.mf select option{background:var(--navy)}
+.mi-wrap{display:flex;align-items:center;gap:1rem}
+.mi-prev{width:60px;height:44px;object-fit:cover;border-radius:0.4rem;border:1px solid rgba(79,195,247,0.15)}
+.mi-ph{width:60px;height:44px;background:var(--navy);border:1px dashed rgba(79,195,247,0.2);border-radius:0.4rem;display:flex;align-items:center;justify-content:center;color:var(--white-muted);font-size:1.1rem}
+.modal-btns{display:flex;gap:0.7rem;margin-top:1.4rem;justify-content:flex-end}
+
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr;gap:2rem}
+  .hero-photo-wrap{order:-1}
+  .photo-ring,.hero-photo,.hero-photo-ph{width:200px;height:200px}
+  .contact-wrap{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr;gap:0.4rem}
+  nav .nav-links{display:none}
+  .stats-bar{gap:2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ZA</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-admin-btn" onclick="openAdmin()">Admin</button>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg b1"></div>
+  <div class="hero-bg b2"></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <span class="hero-tag">Available for hire</span>
+      <h1 class="hero-name">Zyad<br><span class="acc">Ammar</span></h1>
+      <p class="hero-role">Junior Data Analyst</p>
+      <p class="hero-desc">Turning raw data into business decisions. Specialized in Power BI, SQL, and Python — with hands-on experience across banking, sales, marketing, and e-commerce analytics.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-p">View Projects</a>
+        <a href="#contact" class="btn-o">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="photo-ring">
+        <div id="heroPhotoContainer">
+          <div class="hero-photo-ph" onclick="document.getElementById('heroPhotoInput').click()">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span>Upload photo</span>
+          </div>
+        </div>
+      </div>
+      <input type="file" id="heroPhotoInput" accept="image/*" style="display:none" onchange="handleHeroPhoto(this)">
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div><div class="stat-num">6+</div><div class="stat-lbl">Projects Completed</div></div>
+  <div><div class="stat-num">5</div><div class="stat-lbl">Tools Mastered</div></div>
+  <div><div class="stat-num">10+</div><div class="stat-lbl">Analysis Techniques</div></div>
+  <div><div class="stat-num">3</div><div class="stat-lbl">Years Experience</div></div>
+</div>
+
+<section id="skills">
+  <div class="si">
+    <p class="slbl">What I work with</p>
+    <h2 class="stitle reveal">Technical Skills</h2>
+    <div class="div"></div>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="sk-icon">📊</div><div class="sk-name">Power BI</div><div class="sk-desc">DAX, Power Query, Data Modeling, Interactive Dashboards</div></div>
+      <div class="skill-card reveal"><div class="sk-icon">🗄️</div><div class="sk-name">SQL Server</div><div class="sk-desc">Joins, CTEs, Window Functions, Subqueries</div></div>
+      <div class="skill-card reveal"><div class="sk-icon">🐍</div><div class="sk-name">Python</div><div class="sk-desc">Pandas, NumPy, Matplotlib — In Progress</div></div>
+      <div class="skill-card reveal"><div class="sk-icon">📗</div><div class="sk-name">Excel</div><div class="sk-desc">PivotTables, XLOOKUP, Power Query, Modeling</div></div>
+      <div class="skill-card reveal"><div class="sk-icon">📈</div><div class="sk-name">Tableau</div><div class="sk-desc">Data Visualization & Dashboards</div></div>
+      <div class="skill-card reveal"><div class="sk-icon">🔍</div><div class="sk-name">Analytics</div><div class="sk-desc">EDA, Cohort, RFM, CLV, Market Basket, Churn</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="si">
+    <p class="slbl">Portfolio</p>
+    <h2 class="stitle reveal">Featured Projects</h2>
+    <div class="div"></div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="si">
+    <p class="slbl">Background</p>
+    <h2 class="stitle reveal">Experience</h2>
+    <div class="div"></div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-date">2024 – 2025</div>
+        <div><div class="exp-role">AI Tasker — Data Contributor</div><div class="exp-co">Populii AI</div><ul class="exp-pts"><li>Participated in AI data collection including prompt generation and response evaluation.</li><li>Delivered quality output across varied task types supporting large-scale AI training pipelines.</li></ul></div>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-date">2022 – 2024</div>
+        <div><div class="exp-role">AI Data Reviewer & Prompt Engineer</div><div class="exp-co">Outlier AI</div><ul class="exp-pts"><li>Evaluated and ranked AI-generated responses to improve model accuracy and alignment.</li><li>Contributed to multilingual projects with focus on Arabic language quality.</li></ul></div>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-date">2023</div>
+        <div><div class="exp-role">Bachelor of Commerce — Accounting</div><div class="exp-co">Kafr El Sheikh University</div><ul class="exp-pts"><li>Data Analysis Program: Excel, Power BI, SQL, Tableau — Mazen Analytics</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="si">
+    <p class="slbl">Let's talk</p>
+    <h2 class="stitle reveal">Get in Touch</h2>
+    <div class="div"></div>
+    <div class="contact-wrap">
+      <div class="reveal"><p class="contact-desc">I'm currently open to freelance projects and full-time opportunities in data analytics. Whether you need a dashboard, a deep analysis, or someone to join your team — let's connect.</p></div>
+      <div class="contact-links reveal">
+        <a href="mailto:marzyad46@gmail.com" class="contact-link"><div class="cl-icon">✉️</div><div><div class="cl-lbl">Email</div><div class="cl-val">marzyad46@gmail.com</div></div></a>
+        <a href="https://linkedin.com/in/zyad-ammar-a24835313" target="_blank" class="contact-link"><div class="cl-icon">💼</div><div><div class="cl-lbl">LinkedIn</div><div class="cl-val">linkedin.com/in/zyad-ammar</div></div></a>
+        <a href="tel:01097628769" class="contact-link"><div class="cl-icon">📱</div><div><div class="cl-lbl">Phone</div><div class="cl-val">010 9762 8769</div></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Designed & built by Zyad Ammar · 2025</p></footer>
+
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-login" id="adminLogin">
+    <h2>Admin Access</h2>
+    <p>Enter your credentials to manage your portfolio.</p>
+    <div class="af"><label>Email</label><input type="email" id="adminEmail" placeholder="your@email.com"></div>
+    <div class="af"><label>Password</label><input type="password" id="adminPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="admin-err" id="adminErr">Incorrect email or password.</div>
+    <button class="btn-p" style="width:100%;margin-top:0.5rem" onclick="doLogin()">Login</button>
+    <div style="margin-top:1rem;text-align:center"><span onclick="closeAdmin()" style="font-size:0.76rem;color:var(--white-dim);cursor:pointer">← Back to portfolio</span></div>
+  </div>
+  <div class="admin-panel" id="adminPanel" style="display:none">
+    <div class="admin-hdr">
+      <h2>Portfolio Manager</h2>
+      <button class="admin-close" onclick="closeAdmin()">✕ Exit</button>
+    </div>
+    <div class="admin-sec">
+      <h3>Profile Photo</h3>
+      <div class="photo-upload-row">
+        <div id="adminPhotoEl" class="ap-ph">👤</div>
+        <div>
+          <p style="font-size:0.8rem;color:var(--white-dim);margin-bottom:0.75rem">Upload your profile photo — it appears in the hero section.</p>
+          <label class="add-btn" style="cursor:pointer">Choose Photo <input type="file" accept="image/*" style="display:none" onchange="handleAdminPhoto(this)"></label>
+        </div>
+      </div>
+    </div>
+    <div class="admin-sec">
+      <h3>Projects</h3>
+      <div class="proj-list" id="adminProjList"></div>
+      <button class="add-btn" onclick="openModal(null)">+ Add New Project</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal">
+    <h3 id="modalTitle">Add Project</h3>
+    <div class="mf"><label>Title</label><input id="mTitle" placeholder="e.g. Banking Dashboard — Banque Misr"></div>
+    <div class="mf"><label>Tool / Category</label>
+      <select id="mTag">
+        <option>⚡ Power BI</option>
+        <option>🗄️ SQL + Python</option>
+        <option>📗 Excel</option>
+        <option>📊 Tableau</option>
+        <option>⚡ Power BI + Excel</option>
+        <option>🗄️ SQL</option>
+      </select>
+    </div>
+    <div class="mf"><label>Description</label><textarea id="mDesc" placeholder="What did you analyze? What was the business problem?"></textarea></div>
+    <div class="mf"><label>Key Metrics (comma separated)</label><input id="mMetrics" placeholder="1,000 customers, 8.33% default rate"></div>
+    <div class="mf"><label>Live URL (optional)</label><input id="mUrl" placeholder="https://mavenanalytics.io/..."></div>
+    <div class="mf">
+      <label>Project Image (optional)</label>
+      <div class="mi-wrap">
+        <div id="miPreview" class="mi-ph">🖼</div>
+        <label class="add-btn" style="cursor:pointer;font-size:0.76rem">Upload Image<input type="file" accept="image/*" style="display:none" onchange="handleModalImg(this)"></label>
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-o" onclick="closeModal()">Cancel</button>
+      <button class="btn-p" onclick="saveProject()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ADMIN_EMAIL='marzyad46@gmail.com';
+const ADMIN_PASS='Zyad@2025';
+
+const DEF=[
+  {id:1,title:'Banking Performance Dashboard — Banque Misr',tag:'⚡ Power BI',desc:'End-to-end Power BI dashboard analyzing customers, accounts, loans, and transactions across 20 branches. Identified loan default patterns and branch efficiency gaps.',metrics:['1,000 customers','8.33% default rate','74% efficiency gap'],url:'',img:''},
+  {id:2,title:'Call Center Analytics — Salla',tag:'⚡ Power BI',desc:'Merged 3 CSV files to build a unified operational analysis. Detected forecast instability and built an interactive agent-level SLA ranking system.',metrics:['876K calls/month','96% service level','-332K forecast gap'],url:'',img:''},
+  {id:3,title:'Marketing Intelligence Dashboard',tag:'⚡ Power BI',desc:'Full-year marketing dashboard with What-If simulation using dynamic DAX. Identified top-performing channels and customer segments driving revenue.',metrics:['$315M net profit','503% overall ROI','510% social ROI'],url:'',img:''},
+  {id:4,title:'Bike Stores Sales Analysis',tag:'🗄️ SQL + Python',desc:'Analyzed 1,615 transactions using CTEs, Window Functions, and Joins. Revealed 100% one-time buyer rate and identified top store generating 71% of revenue.',metrics:['$6.66M revenue','89.5% fulfillment','41% YoY growth'],url:'',img:''},
+  {id:5,title:'Sales & Delivery Dashboard — Misuo',tag:'⚡ Power BI + Excel',desc:'Analyzed 120 orders across platforms. Discovered hidden late deliveries behind a favorable average and flagged single-platform concentration risk.',metrics:['1.47M revenue','80% delivery rate','15 vs 22 days avg'],url:'',img:''},
+  {id:6,title:'Sales Performance — Massio Furniture',tag:'📗 Excel',desc:'In-depth sales analysis using PivotTables and advanced functions. Identified revenue patterns and supported business decisions for a furniture company.',metrics:['PivotTables','Advanced Functions','Revenue Trends'],url:'',img:''},
+];
+
+let projects=JSON.parse(localStorage.getItem('za_projects')||'null')||DEF;
+let heroPhoto=localStorage.getItem('za_photo')||'';
+let editingId=null,modalImg='';
+
+function saveData(){localStorage.setItem('za_projects',JSON.stringify(projects))}
+
+function renderProjects(){
+  const g=document.getElementById('projectsGrid');
+  g.innerHTML='';
+  projects.forEach(p=>{
+    const c=document.createElement('div');
+    c.className='project-card reveal';
+    c.innerHTML=`<div class="pc-accent"></div>
+    <div class="pc-img">${p.img?`<img src="${p.img}" alt="${p.title}">`:`<div class="pc-img-ph"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>No image</span></div>`}</div>
+    <div class="pc-body">
+      <span class="pc-tag">${p.tag}</span>
+      <h3 class="pc-title">${p.title}</h3>
+      <p class="pc-desc">${p.desc}</p>
+      <div class="pc-metrics">${p.metrics.map(m=>`<span class="metric">${m}</span>`).join('')}</div>
+      ${p.url?`<a href="${p.url}" target="_blank" class="pc-link">View Dashboard →</a>`:`<span class="cs-badge">🔗 Coming soon</span>`}
+    </div>`;
+    g.appendChild(c);
+  });
+  observeReveal();
+}
+
+function renderAdminList(){
+  const l=document.getElementById('adminProjList');
+  l.innerHTML='';
+  projects.forEach(p=>{
+    const r=document.createElement('div');
+    r.className='proj-row';
+    r.innerHTML=`<span class="pr-tag">${p.tag}</span><span class="pr-title">${p.title}</span><div class="pr-btns"><button class="pr-btn" onclick="openModal(${p.id})">Edit</button><button class="pr-btn del" onclick="delProject(${p.id})">Delete</button></div>`;
+    l.appendChild(r);
+  });
+}
+
+function openAdmin(){document.getElementById('adminOverlay').classList.add('open')}
+function closeAdmin(){
+  document.getElementById('adminOverlay').classList.remove('open');
+  document.getElementById('adminLogin').style.display='block';
+  document.getElementById('adminPanel').style.display='none';
+  document.getElementById('adminEmail').value='';
+  document.getElementById('adminPass').value='';
+  document.getElementById('adminErr').style.display='none';
+}
+
+function doLogin(){
+  if(document.getElementById('adminEmail').value.trim()===ADMIN_EMAIL&&document.getElementById('adminPass').value===ADMIN_PASS){
+    document.getElementById('adminLogin').style.display='none';
+    document.getElementById('adminPanel').style.display='block';
+    renderAdminList();refreshAdminPhoto();
+  }else{document.getElementById('adminErr').style.display='block'}
+}
+
+function handleHeroPhoto(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{heroPhoto=e.target.result;localStorage.setItem('za_photo',heroPhoto);refreshHeroPhoto()};
+  r.readAsDataURL(f);
+}
+
+function handleAdminPhoto(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{heroPhoto=e.target.result;localStorage.setItem('za_photo',heroPhoto);refreshHeroPhoto();refreshAdminPhoto()};
+  r.readAsDataURL(f);
+}
+
+function refreshHeroPhoto(){
+  const c=document.getElementById('heroPhotoContainer');
+  c.innerHTML=heroPhoto?`<img src="${heroPhoto}" class="hero-photo" alt="Zyad Ammar">`:`<div class="hero-photo-ph" onclick="document.getElementById('heroPhotoInput').click()"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Upload photo</span></div>`;
+}
+
+function refreshAdminPhoto(){
+  const el=document.getElementById('adminPhotoEl');
+  if(heroPhoto){el.outerHTML=`<img id="adminPhotoEl" src="${heroPhoto}" class="ap-preview" alt="photo">`}
+  else{el.textContent='👤'}
+}
+
+function openModal(id){
+  editingId=id;modalImg='';
+  document.getElementById('modalTitle').textContent=id?'Edit Project':'Add Project';
+  if(id){
+    const p=projects.find(x=>x.id===id);
+    document.getElementById('mTitle').value=p.title;
+    document.getElementById('mTag').value=p.tag;
+    document.getElementById('mDesc').value=p.desc;
+    document.getElementById('mMetrics').value=p.metrics.join(', ');
+    document.getElementById('mUrl').value=p.url||'';
+    modalImg=p.img||'';
+  }else{
+    ['mTitle','mDesc','mMetrics','mUrl'].forEach(id=>document.getElementById(id).value='');
+  }
+  refreshModalImg();
+  document.getElementById('projectModal').classList.add('open');
+}
+
+function closeModal(){document.getElementById('projectModal').classList.remove('open')}
+
+function handleModalImg(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{modalImg=e.target.result;refreshModalImg()};
+  r.readAsDataURL(f);
+}
+
+function refreshModalImg(){
+  const el=document.getElementById('miPreview');
+  if(modalImg){el.outerHTML=`<img id="miPreview" src="${modalImg}" class="mi-prev" alt="">`}
+  else{el.className='mi-ph';el.textContent='🖼'}
+}
+
+function saveProject(){
+  const title=document.getElementById('mTitle').value.trim();
+  if(!title)return;
+  const data={title,tag:document.getElementById('mTag').value,desc:document.getElementById('mDesc').value.trim(),metrics:document.getElementById('mMetrics').value.split(',').map(s=>s.trim()).filter(Boolean),url:document.getElementById('mUrl').value.trim(),img:modalImg};
+  if(editingId){const i=projects.findIndex(x=>x.id===editingId);projects[i]={...projects[i],...data}}
+  else{data.id=Date.now();projects.push(data)}
+  saveData();renderProjects();renderAdminList();closeModal();
+}
+
+function delProject(id){
+  if(!confirm('Delete this project?'))return;
+  projects=projects.filter(x=>x.id!==id);
+  saveData();renderProjects();renderAdminList();
+}
+
+function observeReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+window.addEventListener('load',()=>{refreshHeroPhoto();renderProjects();observeReveal()});
+</script>
+</body>
+</html>
