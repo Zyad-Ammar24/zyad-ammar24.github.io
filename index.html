@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zyad Ammar — Business Intelligence Analyst</title>
+  <meta name="description" content="Business Intelligence Analyst specializing in Power BI, SQL, and Python. Turning data into business decisions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav>
+  <a class="nav-logo" href="#home">
+    <img src="assests/logo.jpeg" alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+    <button class="nav-admin-btn" onclick="openAdmin()">Admin</button>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-inner">
+    <!-- LEFT: Text -->
+    <div class="hero-content">
+      <span class="hero-badge">Available for hire</span>
+      <h1 class="hero-name">Zyad<span class="accent">Ammar</span></h1>
+      <p class="hero-role">Business Intelligence Analyst</p>
+      <p class="hero-tagline"><span class="tagline-word">Numbers</span> <span class="tagline-word">speak.</span> <span class="tagline-word">Minds</span> <span class="tagline-word">translate.</span></p>
+      <p class="hero-desc">
+        I don't just build dashboards — I solve business problems.
+        Specialized in Power BI, SQL, and Python with hands-on experience
+        across banking, retail, aviation, e-commerce, and call center analytics.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-social">
+        <a href="https://linkedin.com/in/zyad-ammar-a24835313" target="_blank" class="social-link" title="LinkedIn">in</a>
+        <a href="https://github.com/Zyad-Ammar24" target="_blank" class="social-link" title="GitHub">gh</a>
+        <a href="mailto:marzyad46@gmail.com" class="social-link" title="Email">@</a>
+        <a href="tel:01097628769" class="social-link" title="Phone">📱</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Photo -->
+    <div class="hero-photo-wrap">
+      <div class="photo-ring-outer">
+        <!-- 
+          PUT YOUR PHOTO HERE:
+          Save it as: assets/photo.jpg  (or .png)
+          Then change the src below.
+        -->
+        <img
+          src="assests/profile.jpg"
+          class="hero-photo"
+          alt="Zyad Ammar"
+          id="heroPhotoEl"
+          onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#141824,#1a2235)'"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num" data-target="5" data-suffix="+">0+</span>
+    <div class="stat-lbl">Projects Completed</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-target="5" data-suffix="+">0+</span>
+    <div class="stat-lbl">Tools Mastered</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-target="10" data-suffix="+">0+</span>
+    <div class="stat-lbl">Analysis Techniques</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-target="1" data-suffix=" yr">0 yr</span>
+    <div class="stat-lbl">Experience</div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">What I work with</p>
+    <h2 class="section-title reveal">Technical Skills</h2>
+    <div class="divider"></div>
+
+    <!-- Filter buttons (like abishekthapa.com) -->
+    <div class="skills-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="viz">Visualization</button>
+      <button class="filter-btn" data-filter="db">Databases</button>
+      <button class="filter-btn" data-filter="core">Programming</button>
+      <button class="filter-btn" data-filter="analytics">Analytics</button>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal" data-category="viz">
+        <span class="sk-icon">📊</span>
+        <div class="sk-name">Power BI</div>
+        <div class="sk-sub">DAX, Power Query, Data Modeling, KPI Design, What-If Analysis</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="92%"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1" data-category="db">
+        <span class="sk-icon">🗄️</span>
+        <div class="sk-name">SQL Server</div>
+        <div class="sk-sub">Joins, CTEs, Window Functions, Subqueries, Data Extraction</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2" data-category="core">
+        <span class="sk-icon">🐍</span>
+        <div class="sk-name">Python</div>
+        <div class="sk-sub">Pandas, NumPy, Matplotlib — Data Analysis & Automation</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="62%"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3" data-category="core">
+        <span class="sk-icon">📗</span>
+        <div class="sk-name">Excel</div>
+        <div class="sk-sub">PivotTables, XLOOKUP, Power Query, Advanced Modeling</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+      </div>
+      <div class="skill-card reveal" data-category="viz">
+        <span class="sk-icon">📈</span>
+        <div class="sk-name">Tableau</div>
+        <div class="sk-sub">Data Visualization & Interactive Dashboards</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="76%"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1" data-category="analytics">
+        <span class="sk-icon">🔍</span>
+        <div class="sk-name">Analytics</div>
+        <div class="sk-sub">EDA, Cohort, RFM, CLV, Market Basket, Churn, Forecasting</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="82%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section id="projects" style="background: var(--bg-elevated);">
+  <div class="section-inner">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title reveal">Featured Projects</h2>
+    <p class="section-sub reveal">Click any project to see full analysis, key insights, and recommendations.</p>
+    <!-- Populated by script.js -->
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EXPERIENCE & EDUCATION
+     ============================================================ -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Background</p>
+    <h2 class="section-title reveal">Experience & Education</h2>
+    <div class="divider"></div>
+
+    <div class="exp-grid">
+
+      <div class="exp-card reveal">
+        <div class="exp-date">2024 — 2025</div>
+        <div class="exp-role">AI Tasker — Data Contributor</div>
+        <div class="exp-co">Populii AI</div>
+        <ul class="exp-pts">
+          <li>Participated in AI data collection including prompt generation and response evaluation.</li>
+          <li>Delivered quality output across varied task types supporting large-scale AI training pipelines.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-date">2022 — 2024</div>
+        <div class="exp-role">AI Data Reviewer & Prompt Engineer</div>
+        <div class="exp-co">Outlier AI</div>
+        <ul class="exp-pts">
+          <li>Evaluated and ranked AI-generated responses to improve model accuracy and alignment.</li>
+          <li>Contributed to multilingual projects with focus on Arabic language quality.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-date">2023</div>
+        <div class="exp-role">Bachelor of Commerce — Accounting</div>
+        <div class="exp-co">Kafr El Sheikh University</div>
+        <ul class="exp-pts">
+          <li>Strong foundation in financial analysis, business operations, and accounting principles.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-date">2024</div>
+        <div class="exp-role">Data Analysis Professional Program</div>
+        <div class="exp-co">Mazen Analytics</div>
+        <ul class="exp-pts">
+          <li>Comprehensive training in Excel, Power BI, SQL, Tableau, and Python for Data Analysis.</li>
+          <li>Hands-on projects across multiple industries with business-focused analytical thinking.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" style="background: var(--bg-elevated);">
+  <div class="section-inner">
+    <p class="section-label">Let's talk</p>
+    <h2 class="section-title reveal">Get in Touch</h2>
+    <div class="divider"></div>
+
+    <div class="contact-grid">
+
+      <!-- Left: Info -->
+      <div class="contact-info reveal">
+        <h3>Ready to collaborate?</h3>
+        <p>Open to freelance projects and full-time opportunities in business intelligence and data analytics. Whether you need a dashboard, a deep analysis, or someone to join your team — I'm ready.</p>
+        <span class="avail-pill"><span class="avail-dot"></span> Available for new projects</span>
+        <div class="contact-links" style="margin-top: 1.5rem">
+          <a href="mailto:marzyad46@gmail.com" class="contact-link">
+            <div class="cl-icon">✉️</div>
+            <div><div class="cl-lbl">Email</div><div class="cl-val">marzyad46@gmail.com</div></div>
+          </a>
+          <a href="https://linkedin.com/in/zyad-ammar-a24835313" target="_blank" class="contact-link">
+            <div class="cl-icon">💼</div>
+            <div><div class="cl-lbl">LinkedIn</div><div class="cl-val">linkedin.com/in/zyad-ammar</div></div>
+          </a>
+          <a href="https://github.com/Zyad-Ammar24" target="_blank" class="contact-link">
+            <div class="cl-icon">🐙</div>
+            <div><div class="cl-lbl">GitHub</div><div class="cl-val">github.com/Zyad-Ammar24</div></div>
+          </a>
+          <a href="tel:01097628769" class="contact-link">
+            <div class="cl-icon">📱</div>
+            <div><div class="cl-lbl">Phone</div><div class="cl-val">010 9762 8769</div></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal reveal-delay-1">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xnjwenbo" method="POST">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" name="subject" placeholder="Project / Opportunity / Question">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="Tell me about your project or opportunity..." required></textarea>
+          </div>
+          <input type="hidden" name="_replyto" value="marzyad46@gmail.com">
+          <button type="submit" class="form-send">Send Message →</button>
+          <p class="form-note">✓ Messages are sent directly to marzyad46@gmail.com</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>// Zyad Ammar &nbsp;·&nbsp; Cairo, Egypt &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; "Numbers speak. Minds translate."</p>
+</footer>
+
+
+<!-- ============================================================
+     PROJECT POPUP — FULL PAGE
+     ============================================================ -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopupOutside(event)">
+  <div class="popup" id="popupBox">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <div class="popup-imgs" id="popupImgs"></div>
+    <div class="popup-body">
+      <span class="popup-tag" id="popupTag"></span>
+      <h2 class="popup-title" id="popupTitle"></h2>
+      <div class="popup-metrics" id="popupMetrics"></div>
+      <p class="popup-section">Overview</p>
+      <p class="popup-overview" id="popupOverview"></p>
+      <div id="insSection">
+        <p class="popup-section">Key Insights</p>
+        <div class="popup-insights" id="popupInsights"></div>
+      </div>
+      <div id="recSection">
+        <p class="popup-section">Recommendations</p>
+        <div class="popup-recs" id="popupRecs"></div>
+      </div>
+      <div id="popupLinkWrap"></div>
+      <div id="popupPdfWrap"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ADMIN OVERLAY
+     ============================================================ -->
+<div class="admin-overlay" id="adminOverlay">
+
+  <!-- Login -->
+  <div class="admin-login" id="adminLogin">
+    <h2>Admin Access</h2>
+    <p>Enter your credentials to manage portfolio content.</p>
+    <div class="af">
+      <label>Email</label>
+      <input type="email" id="adminEmail" placeholder="your@email.com">
+    </div>
+    <div class="af">
+      <label>Password</label>
+      <input type="password" id="adminPass" placeholder="password"
+             onkeydown="if(event.key==='Enter') doLogin()">
+    </div>
+    <div class="admin-err" id="adminErr">Incorrect credentials.</div>
+    <button class="btn btn-primary" style="width:100%;margin-top:.5rem" onclick="doLogin()">Login</button>
+    <div style="margin-top:1rem;text-align:center">
+      <span onclick="closeAdmin()" style="font-size:.74rem;color:var(--fg3);cursor:pointer">Back to portfolio</span>
+    </div>
+  </div>
+
+  <!-- Panel -->
+  <div class="admin-panel" id="adminPanel" style="display:none">
+    <div class="admin-hdr">
+      <h2>Portfolio Manager</h2>
+      <button class="admin-close-btn" onclick="closeAdmin()">Exit</button>
+    </div>
+
+    <div class="admin-sec">
+      <h3>📸 Profile Photo</h3>
+      <div class="photo-row">
+        <div id="adminPhotoWrap"><div class="photo-ph">👤</div></div>
+        <div>
+          <p style="font-size:.78rem;color:var(--fg2);margin-bottom:.7rem">
+            Upload your photo — appears in the Hero section.
+          </p>
+          <label class="add-project-btn" style="cursor:pointer">
+            Choose Photo
+            <input type="file" accept="image/*" style="display:none"
+                   onchange="handleAdminPhoto(this)">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-sec">
+      <h3>📁 Projects</h3>
+      <div class="proj-admin-list" id="adminProjList"></div>
+      <button class="add-project-btn" onclick="openModal(null)">+ Add New Project</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PROJECT MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal">
+    <h3 id="modalTitle">Add Project</h3>
+
+    <div class="mf">
+      <label>Title</label>
+      <input id="mTitle" placeholder="Project title">
+    </div>
+    <div class="mf-row">
+      <div class="mf">
+        <label>Tool / Category</label>
+        <select id="mTag">
+          <option>Power BI</option>
+          <option>SQL + Python</option>
+          <option>Excel</option>
+          <option>Tableau</option>
+          <option>Power BI + Excel</option>
+          <option>SQL</option>
+          <option>Python</option>
+        </select>
+      </div>
+      <div class="mf">
+        <label>Live URL (optional)</label>
+        <input id="mUrl" placeholder="https://...">
+      </div>
+    </div>
+    <div class="mf">
+      <label>Short Description (shown on card)</label>
+      <textarea id="mDesc" placeholder="Brief description of the project..."></textarea>
+    </div>
+    <div class="mf">
+      <label>Key Metrics (comma separated)</label>
+      <input id="mMetrics" placeholder="EGP 299M Deposits, 8.33% Default Rate">
+    </div>
+    <div class="mf">
+      <label>Full Overview (shown in popup)</label>
+      <textarea id="mOverview" style="min-height:90px"
+                placeholder="Detailed analysis description..."></textarea>
+    </div>
+    <div class="mf">
+      <label>Key Insights (one per line)</label>
+      <textarea id="mInsights" placeholder="VIP customers show zero defaults&#10;Tanta records highest default concentration"></textarea>
+    </div>
+    <div class="mf">
+      <label>Recommendations (one per line)</label>
+      <textarea id="mRecs" placeholder="Tighten Mortgage approval criteria&#10;Launch VIP upgrade program"></textarea>
+    </div>
+    <div class="mf">
+      <label>Image Paths — relative to index.html (one per line)</label>
+      <textarea id="mImgPaths" style="min-height:65px"
+                placeholder="assets/banque-cover.png&#10;assets/banque-overview.png"></textarea>
+    </div>
+    <div class="mf">
+      <label>Or Upload Images Directly (up to 4)</label>
+      <div class="imgs-grid">
+        <label class="img-slot" id="slot0">
+          <span class="sph">+</span>
+          <input type="file" accept="image/*" style="display:none" onchange="handleSlot(this,0)">
+        </label>
+        <label class="img-slot" id="slot1">
+          <span class="sph">+</span>
+          <input type="file" accept="image/*" style="display:none" onchange="handleSlot(this,1)">
+        </label>
+        <label class="img-slot" id="slot2">
+          <span class="sph">+</span>
+          <input type="file" accept="image/*" style="display:none" onchange="handleSlot(this,2)">
+        </label>
+        <label class="img-slot" id="slot3">
+          <span class="sph">+</span>
+          <input type="file" accept="image/*" style="display:none" onchange="handleSlot(this,3)">
+        </label>
+      </div>
+    </div>
+
+    <div class="modal-btns">
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProject()">Save Project</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightboxImg" class="lightbox-img" src="">
+</div>
+</body>
+</html>
