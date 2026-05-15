@@ -180,7 +180,7 @@ var DEFAULT_PROJECTS = [
     ],
     imgData: [],
     url: '',
-    pdfPath: 'assests/BikeStores_Analysis.pdf'
+    pdfPath: 'https://drive.google.com/file/d/1c1BMvMS2I642FuPz33bq4iiwnM4v40zK/view?usp=sharing'
   }
 ];
 
