@@ -180,7 +180,7 @@ var DEFAULT_PROJECTS = [
     ],
     imgData: [],
     url: '',
-    pdfPath: 'assets/BikeStores_Analysis.pdf'
+    pdfPath: 'assests/BikeStores_Analysis.pdf'
   }
 ];
 
